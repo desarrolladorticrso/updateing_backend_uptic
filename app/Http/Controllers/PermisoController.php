@@ -10,7 +10,8 @@ class PermisoController extends Controller
 {
     public function index(Request $request)
     {
-        $datas=Permiso::filters($request->only('search'))
+        $datas=Permiso::withTrashed()
+            ->filters($request->only('search'))
             ->paginate();
 
         return response()->json([
@@ -25,113 +26,126 @@ class PermisoController extends Controller
         $validation=Validator::make($request->all(),[
             'name'=>'required|string|max:20|min:3|unique:permisos,name',
             'slug'=>'required|unique:permisos,slug',
-            'description'=>'nullable|string|max:300|min:8',
+            'description'=>'required|string|max:300|min:8',
         ]);
 
         if ($validation->fails()) {
             return response()->json([
                 'message'=>'Error de validacion',
-                'error'=>$validation->errors()
+                'errors'=>$validation->errors()
             ],422);
         }
 
         try {
-
-            $permiso=Permiso::create([
+            Permiso::create([
                 'name'=>$request->name,
-                'slug'=>'',
-                'description'=>$request->full_acces
+                'slug'=>$request->slug,
+                'description'=>$request->description
             ]);
-
-            if ($request->full_acces=='si') {
-                $permiso->permissions()->sync([]);
-            }
-            if ($request->full_acces=='no') {
-                $permiso->permissions()->sync($request->permissions);
-            }
 
             return response()->json([
                 'message'=>'Permiso creado.',
-                'error'=>null
+                'errors'=>null
             ],201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message'=>'Error interno',
-                'error'=>null
+                'message'=>'Ha surgido un error al intentar agregar el permiso.',
+                'errors'=>null
             ],500);
         }
     }
 
-    public function show(permiso $permiso)
+    public function show(permiso $permission)
     {
         return response()->json([
             'message'=>'permiso obtenido',
-            'datas'=>$permiso,
+            'datas'=>$permission,
             'errors'=>null
         ],200);
     }
 
-    public function update(Permiso $permiso, Request $request)
+    public function update(Permiso $permission, Request $request)
     {
         $validation=Validator::make($request->all(),[
-            'name'=>'required|string|max:20|min:3|unique:permisoes,name,'.$permiso->id
+            'name'=>'required|string|max:20|min:3|unique:permisos,name,'.$permission->id,
+            'slug'=>'required|string|max:20|min:3|unique:permisos,slug,'.$permission->id,
+            'description'=>'required|string|max:700|min:3'
         ]);
 
         if ($validation->fails()) {
             return response()->json([
                 'message'=>'Error de validacion',
-                'error'=>$validation->errors()
+                'errors'=>$validation->errors()
             ],422);
         }
 
         try {
-            $permiso->name=$request->name;
-            $permiso->save();
+            $permission->name=$request->name;
+            $permission->slug=$request->slug;
+            $permission->description=$request->description;
+            $permission->save();
 
             return response()->json([
                 'message'=>'Permiso actualizado.',
-                'error'=>null
+                'errors'=>null
             ],202);
         } catch (\Throwable $th) {
             return response()->json([
-                'message'=>'Error interno',
+                'message'=>'Ha surgido un error al tratar de actualizar el permiso.',
                 'error'=>null
             ],500);
         }
     }
 
-    public function destroy(Permiso $permiso)
+    public function destroy(Permiso $permission)
     {
         try {
-            $permiso->delete();
+            $permission->delete();
 
             return response()->json([
                 'message'=>'Permiso inhabilitado.',
-                'error'=>null
+                'errors'=>null
             ],202);
 
         } catch (\Throwable $th) {
             return response()->json([
-                'message'=>'Error interno',
-                'error'=>null
+                'message'=>'Ha surgido un error al tratar de inhabilitar el permiso.',
+                'errors'=>null
+            ],500);
+        }
+    }
+    public function restore($permission)
+    {
+        try {
+            Permiso::withTrashed()->where('id',$permission)->restore();
+
+            return response()->json([
+                'message'=>'Permiso restablecido.',
+                'errors'=>null
+            ],202);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message'=>'Ha surgido un error al intentar de restablecer el permiso.',
+                'errors'=>null
             ],500);
         }
     }
 
-    public function forceDestroy($permiso)
+    public function forceDestroy($permission)
     {
         try {
-            Permiso::withTrashed()->where('id',$permiso)->forceDelete();
+            Permiso::withTrashed()->where('id',$permission)->forceDelete();
 
             return response()->json([
                 'message'=>'permiso eliminado.',
-                'error'=>null
+                'errors'=>null
             ],202);
 
         } catch (\Throwable $th) {
             return response()->json([
-                'message'=>'Error interno',
-                'error'=>null
+                'message'=>'Ha surgido un error al tratar de eliminar el permiso.',
+                'errors'=>null
             ],500);
         }
     }

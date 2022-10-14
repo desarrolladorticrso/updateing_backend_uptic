@@ -10,33 +10,61 @@ class RolController extends Controller
 {
     public function index(Request $request)
     {
-        $datas=Rol::withTrashed()
-            ->filters($request->only('search'))
-            ->paginate();
+        try {
+            $datas=Rol::withTrashed()
+                ->filters($request->only('search'))
+                ->paginate();
 
-        return response()->json([
-            'message'=>'Datos obtenidos',
-            'datas'=>$datas,
-            'errors'=>null
-        ],200);
+            return response()->json([
+                'message'=>'Datos obtenidos',
+                'datas'=>$datas,
+                'errors'=>null
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message'=>'Surgío un error al obtener los datos.',
+                'errors'=>null
+            ],500);
+        }
     }
+
+    public function all()
+    {
+        try {
+            $datas=Rol::orderBy('name')
+                ->get();
+
+            return response()->json([
+                'message'=>'Datos obtenidos',
+                'datas'=>$datas,
+                'errors'=>null
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message'=>'Surgío un error al obtener los datos.',
+                'errors'=>null
+            ],500);
+        }
+    }
+
 
     public function store(Request $request)
     {
         $validation=Validator::make($request->all(),[
             'name'=>'required|string|max:20|min:3|unique:roles,name',
             'full_acces'=>'required|in:si,no',
-            'permission'=>'nullable|array',
+            'permissions'=>'nullable|array',
         ]);
 
         if ($validation->fails()) {
             return response()->json([
                 'message'=>'Error de validacion',
-                'error'=>$validation->errors()
+                'errors'=>$validation->errors()
             ],422);
         }
 
         try {
+
 
             $rol=Rol::create([
                 'name'=>$request->name,
@@ -52,21 +80,24 @@ class RolController extends Controller
 
             return response()->json([
                 'message'=>'Rol creado.',
-                'error'=>null
+                'errors'=>null
             ],201);
         } catch (\Throwable $th) {
             return response()->json([
                 'message'=>'Error interno',
-                'error'=>null
+                'errors'=>null
             ],500);
         }
     }
 
     public function show(Rol $role)
     {
+        $datos=Rol::with('permissions')->where('id',$role->id)->first();
+
+
         return response()->json([
             'message'=>'Rol obtenido',
-            'datas'=>$role,
+            'datas'=>$datos,
             'errors'=>null
         ],200);
     }
@@ -74,28 +105,37 @@ class RolController extends Controller
     public function update(Rol $role, Request $request)
     {
         $validation=Validator::make($request->all(),[
-            'name'=>'required|string|max:20|min:3|unique:roles,name,'.$role->id
+            'name'=>'required|string|max:20|min:3|unique:roles,name,'.$role->id,
+            'full_acces'=>'required|in:si,no',
         ]);
 
         if ($validation->fails()) {
             return response()->json([
                 'message'=>'Error de validacion',
-                'error'=>$validation->errors()
+                'errors'=>$validation->errors()
             ],422);
         }
 
         try {
             $role->name=$request->name;
+            $role->full_acces=$request->full_acces;
             $role->save();
+
+            if ($request->full_acces=='si') {
+                $role->permissions()->sync([]);
+            }
+            if ($request->full_acces=='no') {
+                $role->permissions()->sync($request->permissions);
+            }
 
             return response()->json([
                 'message'=>'Rol actualizado.',
-                'error'=>null
+                'errors'=>null
             ],202);
         } catch (\Throwable $th) {
             return response()->json([
                 'message'=>'Error interno',
-                'error'=>null
+                'errors'=>null
             ],500);
         }
     }
@@ -107,13 +147,31 @@ class RolController extends Controller
 
             return response()->json([
                 'message'=>'Rol inhabilitado.',
-                'error'=>null
+                'errors'=>null
             ],202);
 
         } catch (\Throwable $th) {
             return response()->json([
                 'message'=>'Error interno',
-                'error'=>null
+                'errors'=>null
+            ],500);
+        }
+    }
+
+    public function restore($role)
+    {
+        try {
+            Rol::withTrashed()->where('id',$role)->restore();
+
+            return response()->json([
+                'message'=>'Rol restablecido.',
+                'errors'=>null
+            ],202);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message'=>'Error interno',
+                'errors'=>null
             ],500);
         }
     }
@@ -125,13 +183,13 @@ class RolController extends Controller
 
             return response()->json([
                 'message'=>'Rol eliminado.',
-                'error'=>null
+                'errors'=>null
             ],202);
 
         } catch (\Throwable $th) {
             return response()->json([
                 'message'=>'Error interno',
-                'error'=>null
+                'errors'=>$th
             ],500);
         }
     }
