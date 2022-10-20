@@ -15,7 +15,7 @@ class InventarioCamaraController extends Controller
         $datas=InventarioCamara::withTrashed()
             ->with('centro_costo','punto_oficina','marca_dvr','tecnico','estado')
             ->orderBy('id','DESC')
-            ->filters($request->only('search'))
+            ->filters($request->all())
             ->paginate();
 
         return response()->json([

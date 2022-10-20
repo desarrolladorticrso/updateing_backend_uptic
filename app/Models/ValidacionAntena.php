@@ -54,6 +54,14 @@ class ValidacionAntena extends Model
     {
         $query->when($filters['search'] ?? null, function($query, $search){
             $query->where('id_antena','like','%'.$search.'%');
+        })->when($filters['vpn_id'] ?? null, function($query, $search){
+            $query->where('vpn_id','like','%'.$search.'%');
+        })->when($filters['tecnico_id'] ?? null, function($query, $search){
+            $query->where('tecnico_id','like','%'.$search.'%');
+        })->when($filters['poblacion_id'] ?? null, function($query, $search){
+            $query->where('poblacion_id','like','%'.$search.'%');
+        })->when($filters['operador_satelital_id'] ?? null, function($query, $search){
+            $query->where('operador_satelital_id','like','%'.$search.'%');
         });
     }
 }

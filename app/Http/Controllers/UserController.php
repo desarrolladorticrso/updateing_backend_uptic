@@ -19,7 +19,7 @@ class UserController extends Controller
             ->with('role')
             ->orderBy('name')
             ->where('id','!=',auth()->user()->id)
-            ->filters($request->only('search'))
+            ->filters($request->all())
             ->paginate();
 
         return response()->json([
@@ -37,6 +37,90 @@ class UserController extends Controller
             'message'=>"Datos obtenidos",
             'datas'=>$datas
         ],200);
+    }
+
+    public function updatePassword($id ,Request $request)
+    {
+        $user=User::where('id',$id)->first();
+
+        $validation=Validator::make($request->all(),[
+            'current_password'=>'required',
+            'password_confirmation'=>'required',
+            'password'=>'required|confirmed|string|max:60|min:8',
+
+        ]);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'message'=>'Error de validacion',
+                'errors'=>$validation->errors()
+            ],422);
+        }
+
+        if (!Hash::check($request->current_password,Auth::user()->password)) {
+            throw  ValidationException::withMessages([
+                'current_password'=>'La contraseña no coincide con la de nuestros registros.'
+            ]);
+        }
+
+        $user->password=Hash::make($request->password);
+        $verifited=$user->save();
+
+        if ($verifited) {
+            return response()->json([
+                'message'=>"Contraseña actualizada exitosamente.",
+                'data'=>$user
+            ],201);
+        }
+        if (!$verifited) {
+            return response()->json([
+                'message'=>"No se pudo actualizar tu contraseña.",
+                'data'=>null
+            ],500);
+        }
+    }
+
+    public function updatePrifle($id ,Request $request)
+    {
+        $user=User::where('id',$id)->first();
+
+        $validation=Validator::make($request->all(),[
+            'name'=>'required|string',
+            'email'=>'required|email|unique:users,email,'.$user->id,
+            'number_document'=>'required|string|max:12|min:8|unique:users,number_document,'.$user->id,
+        ]);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'message'=>'Error de validacion',
+                'errors'=>$validation->errors()
+            ],422);
+        }
+
+        try {
+            $user->name=$request->name;
+            $user->email=$request->email;
+            $user->number_document=$request->number_document;
+            $verifited=$user->save();
+
+            if ($verifited) {
+                return response()->json([
+                    'message'=>"Perfil actualizado exitosamente.",
+                    'data'=>$user
+                ],201);
+            }
+            if (!$verifited) {
+                return response()->json([
+                    'message'=>"No se pudo actualizar tu perfil.",
+                    'data'=>null
+                ],500);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message'=>"Ha surgido un error inesperado al tratar de aptualizar tu perfil.",
+                'data'=>null
+            ],500);
+        }
     }
 
     public function store(Request $request)

@@ -44,10 +44,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReporteFallasAbministrativasController;
 use App\Http\Controllers\ValidacionAntenaController;
 use App\Http\Controllers\VpnController;
+use App\Models\InventarioMaquina;
+use Illuminate\Support\Facades\DB;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::controller(UserController::class)->group(function(){
     Route::post('/login','login');
@@ -90,6 +92,8 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::post('/user/{user}', 'destroy')->name('user.destroy');
         Route::post('/user/restore/{user}', 'restore')->name('user.restore');
         Route::delete('/user/{user}', 'forceDestroy')->name('user.forceDestroy');
+        Route::put('/user/update-profile/{user}', 'updatePrifle')->name('update.profile');
+        Route::put('/user/update-password/{user}', 'updatePassword')->name('update.password');
     });
 
     Route::controller(DiscosDuroController::class)->group(function(){
@@ -453,6 +457,7 @@ Route::middleware('auth:sanctum')->group(function(){
 
     Route::controller(InventarioMaquinaController::class)->group(function(){
         Route::get('/inventario-maquinas/listar', 'index')->name('inventario_maquinas.index');
+        Route::get('/inventario-maquinas/report', 'countInventory')->name('inventario_maquinas.countInventory');
         Route::get('/inventario-maquina/{inventario_maquina}', 'show')->name('inventario_maquinas.show');
         Route::put('/inventario-maquina/{inventario_maquina}', 'update')->name('inventario_maquinas.update');
         Route::post('/inventario-maquina', 'store')->name('inventario_maquinas.store');

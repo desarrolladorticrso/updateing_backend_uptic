@@ -15,7 +15,7 @@ class ActualizacionPosslimController extends Controller
         $datas=ActualizacionPosslim::with('tecnico','punto_oficina','version_posslim','version_sims')
             ->withTrashed()
             ->orderBy('id','DESC')
-            ->filters($request->only('search'))
+            ->filters($request->all())
             ->paginate();
 
         return response()->json([

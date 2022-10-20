@@ -19,7 +19,7 @@ class ValidacionAntenaController extends Controller
             ])
             ->withTrashed()
             ->orderBy('id','DESC')
-            ->filters($request->only('search'))
+            ->filters($request->all())
             ->paginate();
 
         return response()->json([

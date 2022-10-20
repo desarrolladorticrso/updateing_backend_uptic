@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EntregaTurnos;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
@@ -14,7 +15,7 @@ class EntregaTurnosController extends Controller
         $datas=EntregaTurnos::withTrashed()
             ->with('tecnico_turno','tecnico_recibe')
             ->orderBy('id', 'DESC')
-            ->filters($request->only('search'))
+            ->filters($request->all())
             ->paginate();
 
         return response()->json([

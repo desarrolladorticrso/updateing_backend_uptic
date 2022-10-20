@@ -15,7 +15,7 @@ class ReporteSeñalController extends Controller
         $datas=ReporteSeñal::withTrashed()
             ->with('poblacion','tecnico','operador_tecnologico')
             ->orderBy('id','DESC')
-            ->filters($request->only('search'))
+            ->filters($request->all())
             ->paginate();
 
         return response()->json([

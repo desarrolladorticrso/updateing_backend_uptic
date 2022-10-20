@@ -59,9 +59,7 @@ class InventarioCamara extends Model
 
     public function scopeFilters($query,array $filters)
     {
-        $query->when($filters['search'] ?? null, function($query, $search){
-            // $query->where('imei','like','%'.$search.'%');
-        })->when($filters['tecnico_id'] ?? null, function($query, $search){
+        $query->when($filters['tecnico_id'] ?? null, function($query, $search){
             $query->where('tecnico_id',$search);
         })->when($filters['marca_dvr_id'] ?? null, function($query, $search){
             $query->where('marca_dvr_id',$search);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Exports\InventoryMachineExport;
 use App\Models\InventarioMaquina;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -14,8 +16,27 @@ class InventarioMaquinaController extends Controller
     {
         $datas=InventarioMaquina::withTrashed()
             ->orderBy('id','DESC')
-            ->with('apn', 'lider', 'asesor', 'tecnico', 'modelo_maquina', 'version_maquina', 'linea_movil', 'punto_oficina')
-            ->filters($request->only('search'))
+            ->join('asesores','asesores.id','=','inventario_maquinas.asesor_id')
+            ->join('lideres','lideres.id','=','inventario_maquinas.lider_id')
+            ->join('lineas_moviles','lineas_moviles.id','=','inventario_maquinas.nro_linea_id')
+            ->join('puntos_oficinas','puntos_oficinas.id','=','inventario_maquinas.punto_oficina_id')
+            ->where(function ($query) use($request){
+                if ($request['search']) {
+                    $query->where('lineas_moviles.linea',$request->search)
+                    ->orWhere('lineas_moviles.serial',$request->search);
+                }
+            })
+            ->filters($request->all())
+            ->select([
+                'inventario_maquinas.id as id',
+                'inventario_maquinas.deleted_at',
+                'lineas_moviles.linea as linea',
+                'asesores.name as nombre_asesor',
+                'asesores.documento as documento_asesor',
+                'lideres.numero_documento as documento_lider',
+                'lideres.name as nombre_lider',
+                'puntos_oficinas.name as puntos_oficinas',
+            ])
             ->paginate();
 
         return response()->json([
@@ -33,10 +54,10 @@ class InventarioMaquinaController extends Controller
             'lider_id'=>'required|exists:lideres,id',
             'asesor_id'=>'required|exists:asesores,id',
             'tecnico_id'=>'required|exists:users,id',
-            'activo_fijo'=>'required|max:30|min:8',
+            'activo_fijo'=>'required|max:30|min:4',
             'nro_linea_id'=>'required|exists:lineas_moviles,id',
             'mantenimiento'=>'required|in:si,no',
-            'serial_maquina'=>'required|max:30|min:8',
+            'serial_maquina'=>'required|max:30|min:4',
             'punto_oficina_id'=>'required|exists:puntos_oficinas,id',
             'modelo_maquina_id'=>'required|exists:modelos_maquinas,id',
             'version_maquina_id'=>'required|exists:version_maquinas,id',
@@ -82,10 +103,10 @@ class InventarioMaquinaController extends Controller
             'lider_id'=>'required|exists:lideres,id',
             'asesor_id'=>'required|exists:asesores,id',
             'tecnico_id'=>'required|exists:users,id',
-            'activo_fijo'=>'required|max:30|min:8',
+            'activo_fijo'=>'required|max:30|min:4',
             'nro_linea_id'=>'required|exists:lineas_moviles,id',
             'mantenimiento'=>'required|in:si,no',
-            'serial_maquina'=>'required|max:30|min:8',
+            'serial_maquina'=>'required|max:30|min:4',
             'punto_oficina_id'=>'required|exists:puntos_oficinas,id',
             'modelo_maquina_id'=>'required|exists:modelos_maquinas,id',
             'version_maquina_id'=>'required|exists:version_maquinas,id',
@@ -184,5 +205,19 @@ class InventarioMaquinaController extends Controller
     public function export(Request $request)
     {
         return Excel::download(new InventoryMachineExport($request),'inventario-de-maquinas.xlsx');
+    }
+
+    public function countInventory()
+    {
+        $datas=InventarioMaquina::select(DB::raw("count(id) as count"))
+
+            ->take(12)
+            ->get();
+
+        return response()->json([
+                'message'=>'Datos obtenidos.',
+                'datas'=>$datas
+            ],200);
+
     }
 }

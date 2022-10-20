@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class LinesMovilesExport implements FromView, ShouldAutoSize,WithStyles,
+class LinesMovilesExport implements FromView, ShouldAutoSize,WithStyles
 {
     private $request;
 

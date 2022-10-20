@@ -41,14 +41,7 @@ class ActualizacionPosslim extends Model
 
     public function scopeFilters($query,array $filters)
     {
-        $query->when($filters['search'] ?? null, function($query, $search){
-            // $query->where('tecnico.name','like','%'.$search.'%');
-            // ->join('users', function($join) use($search){
-            //     $join->on('users.id','=','actualizacion_posslims.tecnico_id')
-            //     ->where('users.name','like', '%'.$search.'%');
-            // });
-        })
-        ->when($filters['tecnico_id'] ?? null, function($query, $search){
+        $query->when($filters['tecnico_id'] ?? null, function($query, $search){
             $query->where('tecnico_id',$search);
         })
         ->when($filters['punto_oficina_id'] ?? null, function($query, $search){

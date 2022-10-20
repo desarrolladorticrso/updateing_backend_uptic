@@ -75,9 +75,7 @@ class InventarioMaquina extends Model
 
     public function scopeFilters($query,array $filters)
     {
-        $query->when($filters['search'] ?? null, function($query, $search){
-            $query->where('imei','like','%'.$search.'%');
-        })->when($filters['leaders_id'] ?? null, function($query, $search){
+        $query->when($filters['leaders_id'] ?? null, function($query, $search){
             $query->where('lider_id',$search);
         })->when($filters['officePoints_id'] ?? null, function($query, $search){
             $query->where('punto_oficina_id',$search);
