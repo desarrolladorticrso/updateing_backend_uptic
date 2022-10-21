@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LineaMovile;
 use Illuminate\Http\Request;
 use App\Exports\LinesMovilesExport;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
@@ -212,5 +213,20 @@ class LineaMovileController extends Controller
     public function export(Request $request)
     {
         return Excel::download(new LinesMovilesExport($request), 'lineas-moviles.xlsx');
+    }
+
+    public function report()
+    {
+        $datas=DB::table('operador_simcards')
+            ->select(DB::raw('count(lineas_moviles.id) as number, name'))
+            ->join('lineas_moviles','lineas_moviles.OPERADOR_ID','=','operador_simcards.id')
+            ->groupBy('name')
+            ->get();
+
+        return response()->json([
+                'message'=>'Datos obtenidos.',
+                'datas'=>$datas
+            ],200);
+
     }
 }

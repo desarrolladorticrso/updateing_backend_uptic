@@ -207,11 +207,12 @@ class InventarioMaquinaController extends Controller
         return Excel::download(new InventoryMachineExport($request),'inventario-de-maquinas.xlsx');
     }
 
-    public function countInventory()
+    public function report()
     {
-        $datas=InventarioMaquina::select(DB::raw("count(id) as count"))
-
-            ->take(12)
+        $datas=DB::table('modelos_maquinas')
+            ->select(DB::raw('count(inventario_maquinas.id) as number, name'))
+            ->join('inventario_maquinas','inventario_maquinas.modelo_maquina_id','=','modelos_maquinas.id')
+            ->groupBy('name')
             ->get();
 
         return response()->json([

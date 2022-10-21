@@ -457,7 +457,7 @@ Route::middleware('auth:sanctum')->group(function(){
 
     Route::controller(InventarioMaquinaController::class)->group(function(){
         Route::get('/inventario-maquinas/listar', 'index')->name('inventario_maquinas.index');
-        Route::get('/inventario-maquinas/report', 'countInventory')->name('inventario_maquinas.countInventory');
+        Route::get('/inventario-maquinas/report', 'report')->name('inventario_maquinas.report');
         Route::get('/inventario-maquina/{inventario_maquina}', 'show')->name('inventario_maquinas.show');
         Route::put('/inventario-maquina/{inventario_maquina}', 'update')->name('inventario_maquinas.update');
         Route::post('/inventario-maquina', 'store')->name('inventario_maquinas.store');
@@ -469,6 +469,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::controller(LineaMovileController::class)->group(function(){
         Route::get('/lineas-moviles/listar', 'index')->name('lineas_moviles.index');
         Route::get('/lineas-moviles/all', 'all')->name('lineas_moviles.all');
+        Route::get('/lineas-moviles/report', 'report')->name('lineas_moviles.report');
         Route::get('/linea-movil/{linea_movil}', 'show')->name('lineas_moviles.show');
         Route::put('/linea-movil/{linea_movil}', 'update')->name('lineas_moviles.update');
         Route::post('/linea-movil', 'store')->name('lineas_moviles.store');
