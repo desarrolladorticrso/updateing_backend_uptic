@@ -73,6 +73,11 @@ class User extends Authenticatable
         return $this->hasOne(InventarioCamara::class,'tecnico_id');
     }
 
+    public function fallas_administrativas()
+    {
+        return $this->hasMany(ReporteFallasAbministrativas::class, 'user_id');
+    }
+
     public function validacion_antena()
     {
         return $this->hasOne(ValidacionAntena::class);

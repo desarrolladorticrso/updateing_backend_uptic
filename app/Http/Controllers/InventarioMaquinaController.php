@@ -22,8 +22,12 @@ class InventarioMaquinaController extends Controller
             ->join('puntos_oficinas','puntos_oficinas.id','=','inventario_maquinas.punto_oficina_id')
             ->where(function ($query) use($request){
                 if ($request['search']) {
-                    $query->where('lineas_moviles.linea',$request->search)
-                    ->orWhere('lineas_moviles.serial',$request->search);
+                    $query->where('lineas_moviles.linea','like','%'.$request->search.'%')
+                        ->orWhere('lineas_moviles.serial','like','%'.$request->search.'%')
+                        ->orWhere('asesores.name','like','%'.$request->search.'%')
+                        ->orWhere('asesores.documento','like','%'.$request->search.'%')
+                        ->orWhere('inventario_maquinas.activo_fijo','like','%'.$request->search.'%')
+                        ->orWhere('inventario_maquinas.serial_maquina','like','%'.$request->search.'%');
                 }
             })
             ->filters($request->all())

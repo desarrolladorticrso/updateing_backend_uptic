@@ -11,6 +11,7 @@ class ReporteFallasAbministrativasController extends Controller
     public function index(Request $request)
     {
         $datas=ReporteFallasAbministrativas::withTrashed()
+            ->with('equipo','user')
             ->filters($request->only('search'))
             ->paginate();
 
@@ -28,7 +29,7 @@ class ReporteFallasAbministrativasController extends Controller
             'user_id'=>'required|numeric|exists:users,id',
             'equipo_id'=>'required|numeric|exists:marca_equipos,id',
             'responsable'=>'required|string|max:200|min:10',
-            'fallas_precentadas'=>'required',
+            'fallas_presentadas'=>'required',
             'fecha_mantenimiento'=>'required',
             'se_envio_a_provedor'=>'required',
         ]);
@@ -46,7 +47,7 @@ class ReporteFallasAbministrativasController extends Controller
                 'user_id'=>$request->user_id,
                 'equipo_id'=>$request->equipo_id,
                 'responsable'=>$request->responsable,
-                'fallas_precentadas'=>$request->fallas_precentadas,
+                'fallas_presentadas'=>$request->fallas_presentadas,
                 'fecha_mantenimiento'=>$request->fecha_mantenimiento,
                 'se_envio_a_provedor'=>$request->se_envio_a_provedor,
             ]);
@@ -58,7 +59,7 @@ class ReporteFallasAbministrativasController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message'=>'Ha surgido un error al intentar agregar el reporte de falla administrativa.',
-                'errors'=>null
+                'errors'=>$th
             ],500);
         }
     }
@@ -79,7 +80,7 @@ class ReporteFallasAbministrativasController extends Controller
             'user_id'=>'required|numeric|exists:users,id',
             'equipo_id'=>'required|numeric|exists:marca_equipos,id',
             'responsable'=>'required|string|max:200|min:10',
-            'fallas_precentadas'=>'required',
+            'fallas_presentadas'=>'required',
             'fecha_mantenimiento'=>'required',
             'se_envio_a_provedor'=>'required',
         ]);
@@ -97,7 +98,7 @@ class ReporteFallasAbministrativasController extends Controller
             $reporte_falla_administrativa->user_id=$request->user_id;
             $reporte_falla_administrativa->equipo_id=$request->equipo_id;
             $reporte_falla_administrativa->responsable=$request->responsable;
-            $reporte_falla_administrativa->fallas_precentadas=$request->fallas_precentadas;
+            $reporte_falla_administrativa->fallas_presentadas=$request->fallas_presentadas;
             $reporte_falla_administrativa->fecha_mantenimiento=$request->fecha_mantenimiento;
             $reporte_falla_administrativa->se_envio_a_provedor=$request->se_envio_a_provedor;
             $reporte_falla_administrativa->save();
@@ -109,7 +110,7 @@ class ReporteFallasAbministrativasController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message'=>'Ha surgido un error al tratar de actualizar el reporte de falla administrativas.',
-                'error'=>null
+                'error'=>$th
             ],500);
         }
     }

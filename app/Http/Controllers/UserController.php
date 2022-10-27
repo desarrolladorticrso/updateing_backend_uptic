@@ -142,10 +142,10 @@ class UserController extends Controller
         if (!$validate->fails()) {
             try {
                 $user=User::create([
-                    'role_id'=>1,
+                    'role_id'=>2,
                     'name'=>$request->name,
                     'email'=>$request->email,
-                    'number_document'=>$request->document,
+                    'number_document'=>$request->number_document,
                     'password'=>Hash::make($request->password),
                 ]);
 

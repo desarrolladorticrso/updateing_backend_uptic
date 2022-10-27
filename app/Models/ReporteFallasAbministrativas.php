@@ -17,11 +17,20 @@ class ReporteFallasAbministrativas extends Model
         'user_id',
         'equipo_id',
         'responsable',
-        'fallas_precentadas',
+        'fallas_presentadas',
         'fecha_mantenimiento',
         'se_envio_a_provedor',
     ];
 
+    public function equipo()
+    {
+        return $this->belongsTo(MarcaEquipo::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function scopeFilters($query,array $filters)
     {

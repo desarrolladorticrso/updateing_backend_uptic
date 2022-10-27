@@ -20,6 +20,7 @@ use App\Http\Controllers\MarcaImpresoraController;
 use App\Http\Controllers\InventarioEquiposController;
 use App\Http\Controllers\InventarioMaquinaController;
 use App\Http\Controllers\MarcaDvrController;
+use App\Http\Controllers\MarcaMauseController;
 use App\Http\Controllers\OperadorSatelitalController;
 use App\Http\Controllers\OperadorSimcardController;
 use App\Http\Controllers\OperadorTecnologicoController;
@@ -28,7 +29,7 @@ use App\Http\Controllers\PoblacionController;
 use App\Http\Controllers\ProcesoController;
 use App\Http\Controllers\PuntosOficinasController;
 use App\Http\Controllers\RecepcionCentralController;
-use App\Http\Controllers\ReporteSeñalController;
+use App\Http\Controllers\ReporteSenalController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\SistemaOperativoController;
 use App\Http\Controllers\TipoConexionController;
@@ -98,6 +99,7 @@ Route::middleware('auth:sanctum')->group(function(){
 
     Route::controller(DiscosDuroController::class)->group(function(){
         Route::get('/discos-duros/listar', 'index')->name('discos_duro.index');
+        Route::get('/discos-duros/all', 'all')->name('discos_duro.all');
         Route::get('/disco-duro/{disco_duro}', 'show')->name('discos_duro.show');
         Route::put('/disco-duro/{disco_duro}', 'update')->name('discos_duro.update');
         Route::post('/disco-duro', 'store')->name('discos_duro.store');
@@ -281,7 +283,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::delete('/poblacion/{poblacion}', 'forceDestroy')->name('poblacions.forceDestroy');
     });
 
-    Route::controller(ReporteSeñalController::class)->group(function(){
+    Route::controller(ReporteSenalController::class)->group(function(){
         Route::get('/reporte-senales/listar', 'index')->name('reporte_senal.index');
         Route::get('/reporte-senal/{reporte_señal}', 'show')->name('reporte_senal.show');
         Route::put('/reporte-senal/{reporte_señal}', 'update')->name('reporte_senal.update');
@@ -304,12 +306,12 @@ Route::middleware('auth:sanctum')->group(function(){
 
     Route::controller(ReporteFallasAbministrativasController::class)->group(function(){
         Route::get('/reporte-fallas-administrativas/listar', 'index')->name('reporte_fallas_administrativas.index');
-        Route::get('/reporte_falla_administativa/{reporte_falla_administativa}', 'show')->name('reporte_fallas_administrativas.show');
-        Route::put('/reporte_falla_administativa/{reporte_falla_administativa}', 'update')->name('reporte_fallas_administrativas.update');
+        Route::get('/reporte_falla_administativa/{reporte_falla_administrativa}', 'show')->name('reporte_fallas_administrativas.show');
+        Route::put('/reporte_falla_administativa/{reporte_falla_administrativa}', 'update')->name('reporte_fallas_administrativas.update');
         Route::post('/reporte_falla_administativa', 'store')->name('reporte_fallas_administrativas.store');
-        Route::post('/reporte_falla_administativa/{reporte_falla_administativa}', 'destroy')->name('reporte_fallas_administrativas.destroy');
-        Route::post('/reporte_falla_administativa/restore/{reporte_falla_administativa}', 'restore')->name('reporte_fallas_administrativas.restore');
-        Route::delete('/reporte_falla_administativa/{reporte_falla_administativa}', 'forceDestroy')->name('reporte_fallas_administrativas.forceDestroy');
+        Route::post('/reporte_falla_administativa/{reporte_falla_administrativa}', 'destroy')->name('reporte_fallas_administrativas.destroy');
+        Route::post('/reporte_falla_administativa/restore/{reporte_falla_administrativa}', 'restore')->name('reporte_fallas_administrativas.restore');
+        Route::delete('/reporte_falla_administativa/{reporte_falla_administrativa}', 'forceDestroy')->name('reporte_fallas_administrativas.forceDestroy');
     });
 
     Route::controller(RecepcionCentralController::class)->group(function(){
@@ -444,6 +446,17 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::delete('/marca-dvr/{marca_dvr}', 'forceDestroy')->name('marcas_dvrs.forceDestroy');
     });
 
+    Route::controller(MarcaMauseController::class)->group(function(){
+        Route::get('/marcas-mouses/listar', 'index')->name('marcas_mouse.index');
+        Route::get('/marcas-mouses/all', 'all')->name('marcas_mouse.all');
+        Route::get('/marca-mouse/{marca_mouse}', 'show')->name('marcas_mouse.show');
+        Route::put('/marca-mouse/{marca_mouse}', 'update')->name('marcas_mouse.update');
+        Route::post('/marca-mouse', 'store')->name('marcas_mouse.store');
+        Route::post('/marca-mouse/{marca_mouse}', 'destroy')->name('marcas_mouse.destroy');
+        Route::post('/marca-mouse/restore/{marca_mouse}', 'restore')->name('marcas_mouse.restore');
+        Route::delete('/marca-mouse/{marca_mouse}', 'forceDestroy')->name('marcas_mouse.forceDestroy');
+    });
+
     Route::controller(CentroCostoController::class)->group(function(){
         Route::get('/centros-costos/listar', 'index')->name('centros_costos.index');
         Route::get('/centros-costos/all', 'all')->name('centros_costos.all');
@@ -525,5 +538,6 @@ Route::get('/inventario-maquinas/export', [InventarioMaquinaController::class, '
 Route::get('/actualizaciones-posslims/export', [ActualizacionPosslimController::class, 'export'])->name('actualizacion_posslim.export');
 Route::get('/inventario-camaras/export', [InventarioCamaraController::class, 'export'])->name('inventario_camaras.export');
 Route::get('/inventario-recepcion-central/export', [RecepcionCentralController::class, 'export'])->name('recepcion_central.export');
-Route::get('/inventario-reporte-senales/export', [ReporteSeñalController::class, 'export'])->name('reporte_senal.export');
+Route::get('/inventario-reporte-senales/export', [ReporteSenalController::class, 'export'])->name('reporte_senal.export');
 Route::get('/inventario-validacion-antenas/export', [ValidacionAntenaController::class, 'export'])->name('validacion_antenas.export');
+Route::get('/inventario-equipos/export', [InventarioEquiposController::class, 'export'])->name('inventario_equipos.export');

@@ -2,13 +2,13 @@
 
 namespace App\Exports;
 
-use App\Models\ReporteSeñal;
+use App\Models\ReporteSenal;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-class ReporteSeñalExport implements FromView, ShouldAutoSize, WithStyles
+class ReporteSenalExport implements FromView, ShouldAutoSize, WithStyles
 {
     private $request;
 
@@ -28,7 +28,7 @@ class ReporteSeñalExport implements FromView, ShouldAutoSize, WithStyles
         $datas=[];
 
         if ($this->request->opcion=='si') {
-            $datas=ReporteSeñal::with([
+            $datas=ReporteSenal::with([
                 'tecnico',
                 'poblacion',
                 'operador_tecnologico',
@@ -36,7 +36,7 @@ class ReporteSeñalExport implements FromView, ShouldAutoSize, WithStyles
         }
 
         if ($this->request->opcion=='no') {
-            $datas=ReporteSeñal::with([
+            $datas=ReporteSenal::with([
                 'tecnico',
                 'poblacion',
                 'operador_tecnologico',

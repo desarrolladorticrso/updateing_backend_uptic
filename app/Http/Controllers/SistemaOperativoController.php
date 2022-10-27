@@ -21,6 +21,17 @@ class SistemaOperativoController extends Controller
         ],200);
     }
 
+    public function all()
+    {
+        $datas=SistemaOperativo::orderBy('name')
+            ->get();
+
+        return response()->json([
+            'message'=>"Datos obtenidos",
+            'datas'=>$datas
+        ],200);
+    }
+
     public function store(Request $request)
     {
         $validate=Validator::make($request->all(),[

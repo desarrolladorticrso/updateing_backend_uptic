@@ -20,6 +20,16 @@ class DiscosDuroController extends Controller
             'datas'=>$datas
         ],200);
     }
+    public function all()
+    {
+        $datas=DiscosDuro::orderBy('name')
+            ->get();
+
+        return response()->json([
+            'message'=>"Datos obtenidos",
+            'datas'=>$datas
+        ],200);
+    }
 
     public function store(Request $request)
     {

@@ -47,14 +47,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los roles',
         ]);
         Permiso::create([
-            'slug'=>'roles.store',
+            'slug'=>'roles.create',
             'name'=>'Agregar roles',
             'description'=>'Puede agregar roles',
         ]);
         Permiso::create([
             'slug'=>'roles.show',
-            'name'=>'Actualizar roles',
-            'description'=>'Puede actualizar todos los roles',
+            'name'=>'mirar datos roles',
+            'description'=>'Puede mirar datos todos los roles',
+        ]);
+        Permiso::create([
+            'slug'=>'roles.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los roles',
         ]);
         Permiso::create([
             'slug'=>'roles.destroy',
@@ -79,14 +84,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los permission',
         ]);
         Permiso::create([
-            'slug'=>'permission.store',
+            'slug'=>'permission.create',
             'name'=>'Agregar permission',
             'description'=>'Puede agregar permission',
         ]);
         Permiso::create([
             'slug'=>'permission.show',
-            'name'=>'Actualizar permission',
-            'description'=>'Puede actualizar todos los permission',
+            'name'=>'mirar datos permission',
+            'description'=>'Puede mirar datos todos los permission',
+        ]);
+        Permiso::create([
+            'slug'=>'permission.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los permisos',
         ]);
         Permiso::create([
             'slug'=>'permission.destroy',
@@ -111,14 +121,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los user',
         ]);
         Permiso::create([
-            'slug'=>'user.store',
+            'slug'=>'user.create',
             'name'=>'Agregar user',
             'description'=>'Puede agregar user',
         ]);
         Permiso::create([
+            'slug'=>'user.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los usuarios',
+        ]);
+        Permiso::create([
             'slug'=>'user.show',
-            'name'=>'Actualizar user',
-            'description'=>'Puede actualizar todos los user',
+            'name'=>'mirar datos user',
+            'description'=>'Puede mirar datos todos los user',
         ]);
         Permiso::create([
             'slug'=>'user.destroy',
@@ -143,14 +158,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los discos duros',
         ]);
         Permiso::create([
-            'slug'=>'discos_duro.store',
+            'slug'=>'discos_duro.create',
             'name'=>'Agregar discos duros',
             'description'=>'Puede agregar discos duros',
         ]);
         Permiso::create([
+            'slug'=>'discos_duro.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los discos duros',
+        ]);
+        Permiso::create([
             'slug'=>'discos_duro.show',
-            'name'=>'Actualizar discos duros',
-            'description'=>'Puede actualizar todos los discos duros',
+            'name'=>'mirar datos discos duros',
+            'description'=>'Puede mirar datos todos los discos duros',
         ]);
         Permiso::create([
             'slug'=>'discos_duro.destroy',
@@ -175,14 +195,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los asesores',
         ]);
         Permiso::create([
-            'slug'=>'asesor.store',
+            'slug'=>'asesor.create',
             'name'=>'Agregar asesores',
             'description'=>'Puede agregar asesores',
         ]);
         Permiso::create([
             'slug'=>'asesor.show',
-            'name'=>'Actualizar asesores',
-            'description'=>'Puede actualizar todos los asesores',
+            'name'=>'mirar datos asesores',
+            'description'=>'Puede mirar datos todos los asesores',
+        ]);
+        Permiso::create([
+            'slug'=>'asesor.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los asesores',
         ]);
         Permiso::create([
             'slug'=>'asesor.destroy',
@@ -207,14 +232,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los lideres',
         ]);
         Permiso::create([
-            'slug'=>'lider.store',
+            'slug'=>'lider.create',
             'name'=>'Agregar lideres',
             'description'=>'Puede agregar lideres',
         ]);
         Permiso::create([
             'slug'=>'lider.show',
-            'name'=>'Actualizar lideres',
-            'description'=>'Puede actualizar todos los lideres',
+            'name'=>'mirar datos lideres',
+            'description'=>'Puede mirar datos todos los lideres',
+        ]);
+        Permiso::create([
+            'slug'=>'lider.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los lider',
         ]);
         Permiso::create([
             'slug'=>'lider.destroy',
@@ -239,14 +269,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los apns',
         ]);
         Permiso::create([
-            'slug'=>'apns.store',
+            'slug'=>'apns.create',
             'name'=>'Agregar apns',
             'description'=>'Puede agregar apns',
         ]);
         Permiso::create([
             'slug'=>'apns.show',
-            'name'=>'Actualizar apns',
-            'description'=>'Puede actualizar todos los apns',
+            'name'=>'mirar datos apns',
+            'description'=>'Puede mirar datos todos los apns',
+        ]);
+        Permiso::create([
+            'slug'=>'apns.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los apns',
         ]);
         Permiso::create([
             'slug'=>'apns.destroy',
@@ -271,14 +306,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los vpn',
         ]);
         Permiso::create([
-            'slug'=>'vpn.store',
+            'slug'=>'vpn.create',
             'name'=>'Agregar vpn',
             'description'=>'Puede agregar vpn',
         ]);
         Permiso::create([
             'slug'=>'vpn.show',
-            'name'=>'Actualizar vpn',
-            'description'=>'Puede actualizar todos los vpn',
+            'name'=>'mirar datos vpn',
+            'description'=>'Puede mirar datos todos los vpn',
+        ]);
+        Permiso::create([
+            'slug'=>'vpn.update',
+            'name'=>'vpn datos',
+            'description'=>'Puede actualizar datos todos los vpn',
         ]);
         Permiso::create([
             'slug'=>'vpn.destroy',
@@ -303,14 +343,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los entrega de turnos',
         ]);
         Permiso::create([
-            'slug'=>'entrega_turnos.store',
+            'slug'=>'entrega_turnos.create',
             'name'=>'Agregar entrega de turnos',
             'description'=>'Puede agregar entrega de turnos',
         ]);
         Permiso::create([
             'slug'=>'entrega_turnos.show',
-            'name'=>'Actualizar entrega de turnos',
-            'description'=>'Puede actualizar todos los entrega de turnos',
+            'name'=>'mirar datos entrega de turnos',
+            'description'=>'Puede mirar datos todos los entrega de turnos',
+        ]);
+        Permiso::create([
+            'slug'=>'entrega_turnos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los entrega de turnos',
         ]);
         Permiso::create([
             'slug'=>'entrega_turnos.destroy',
@@ -335,14 +380,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los estados',
         ]);
         Permiso::create([
-            'slug'=>'estados.store',
+            'slug'=>'estados.create',
             'name'=>'Agregar estados',
             'description'=>'Puede agregar estados',
         ]);
         Permiso::create([
             'slug'=>'estados.show',
-            'name'=>'Actualizar estados',
-            'description'=>'Puede actualizar todos los estados',
+            'name'=>'mirar datos estados',
+            'description'=>'Puede mirar datos todos los estados',
+        ]);
+        Permiso::create([
+            'slug'=>'estados.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos todos los estados',
         ]);
         Permiso::create([
             'slug'=>'estados.destroy',
@@ -367,14 +417,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los version del posslim',
         ]);
         Permiso::create([
-            'slug'=>'version_posslims.store',
+            'slug'=>'version_posslims.create',
             'name'=>'Agregar version del posslim',
             'description'=>'Puede agregar version del posslim',
         ]);
         Permiso::create([
+            'slug'=>'version_posslims.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos los version del posslim',
+        ]);
+        Permiso::create([
             'slug'=>'version_posslims.show',
-            'name'=>'Actualizar version del posslim',
-            'description'=>'Puede actualizar todos los version del posslim',
+            'name'=>'mirar datos version del posslim',
+            'description'=>'Puede mirar datos todos los version del posslim',
         ]);
         Permiso::create([
             'slug'=>'version_posslims.destroy',
@@ -399,14 +454,14 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los version de maquinas',
         ]);
         Permiso::create([
-            'slug'=>'version_maquinas.store',
+            'slug'=>'version_maquinas.create',
             'name'=>'Agregar version de maquinas',
             'description'=>'Puede agregar version de maquinas',
         ]);
         Permiso::create([
             'slug'=>'version_maquinas.show',
-            'name'=>'Actualizar version de maquinas',
-            'description'=>'Puede actualizar todos los version de maquinas',
+            'name'=>'mirar datos version de maquinas',
+            'description'=>'Puede mirar datos todos los version de maquinas',
         ]);
         Permiso::create([
             'slug'=>'version_maquinas.destroy',
@@ -431,14 +486,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los version del sims',
         ]);
         Permiso::create([
-            'slug'=>'version_sims.store',
+            'slug'=>'version_sims.create',
             'name'=>'Agregar version del sims',
             'description'=>'Puede agregar version del sims',
         ]);
         Permiso::create([
             'slug'=>'version_sims.show',
-            'name'=>'Actualizar version del sims',
-            'description'=>'Puede actualizar todos los version del sims',
+            'name'=>'mirar datos version del sims',
+            'description'=>'Puede mirar datos todos los version del sims',
+        ]);
+        Permiso::create([
+            'slug'=>'version_sims.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos los version del sims',
         ]);
         Permiso::create([
             'slug'=>'version_sims.destroy',
@@ -463,14 +523,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los transportadoras',
         ]);
         Permiso::create([
-            'slug'=>'transportadoras.store',
+            'slug'=>'transportadoras.create',
             'name'=>'Agregar transportadoras',
             'description'=>'Puede agregar transportadoras',
         ]);
         Permiso::create([
+            'slug'=>'transportadoras.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos los version del transportadoras',
+        ]);
+        Permiso::create([
             'slug'=>'transportadoras.show',
-            'name'=>'Actualizar transportadoras',
-            'description'=>'Puede actualizar todos los transportadoras',
+            'name'=>'mirar datos transportadoras',
+            'description'=>'Puede mirar datos todos los transportadoras',
         ]);
         Permiso::create([
             'slug'=>'transportadoras.destroy',
@@ -495,14 +560,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los tipos de servicios',
         ]);
         Permiso::create([
-            'slug'=>'tipo_servicios_puntos.store',
+            'slug'=>'tipo_servicios_puntos.create',
             'name'=>'Agregar tipos de servicios',
             'description'=>'Puede agregar tipos de servicios',
         ]);
         Permiso::create([
+            'slug'=>'tipo_servicios_puntos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos los version del tipo de servicios de ountos',
+        ]);
+        Permiso::create([
             'slug'=>'tipo_servicios_puntos.show',
-            'name'=>'Actualizar tipos de servicios',
-            'description'=>'Puede actualizar todos los tipos de servicios',
+            'name'=>'mirar datos tipos de servicios',
+            'description'=>'Puede mirar datos todos los tipos de servicios',
         ]);
         Permiso::create([
             'slug'=>'tipo_servicios_puntos.destroy',
@@ -527,14 +597,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los tipos de lineas gprs',
         ]);
         Permiso::create([
-            'slug'=>'tipo_lineas_gprs.store',
+            'slug'=>'tipo_lineas_gprs.create',
             'name'=>'Agregar tipos de lineas gprs',
             'description'=>'Puede agregar tipos de lineas gprs',
         ]);
         Permiso::create([
+            'slug'=>'tipo_lineas_gprs.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de ls lineas gprs',
+        ]);
+        Permiso::create([
             'slug'=>'tipo_lineas_gprs.show',
-            'name'=>'Actualizar tipos de lineas gprs',
-            'description'=>'Puede actualizar todos los tipos de lineas gprs',
+            'name'=>'mirar datos tipos de lineas gprs',
+            'description'=>'Puede mirar datos todos los tipos de lineas gprs',
         ]);
         Permiso::create([
             'slug'=>'tipo_lineas_gprs.destroy',
@@ -559,14 +634,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los tipos de equipos de trabajo',
         ]);
         Permiso::create([
-            'slug'=>'tipo_equipos_trabajos.store',
+            'slug'=>'tipo_equipos_trabajos.create',
             'name'=>'Agregar tipos de equipos de trabajo',
             'description'=>'Puede agregar tipos de equipos de trabajo',
         ]);
         Permiso::create([
             'slug'=>'tipo_equipos_trabajos.show',
-            'name'=>'Actualizar tipos de equipos de trabajo',
-            'description'=>'Puede actualizar todos los tipos de equipos de trabajo',
+            'name'=>'mirar datos tipos de equipos de trabajo',
+            'description'=>'Puede mirar datos todos los tipos de equipos de trabajo',
+        ]);
+        Permiso::create([
+            'slug'=>'tipo_equipos_trabajos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los tipos de equipos de trabajo',
         ]);
         Permiso::create([
             'slug'=>'tipo_equipos_trabajos.destroy',
@@ -591,14 +671,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los tipos de conexiones',
         ]);
         Permiso::create([
-            'slug'=>'tipos_conexiones.store',
+            'slug'=>'tipos_conexiones.create',
             'name'=>'Agregar tipos de conexiones',
             'description'=>'Puede agregar tipos de conexiones',
         ]);
         Permiso::create([
             'slug'=>'tipos_conexiones.show',
-            'name'=>'Actualizar tipos de conexiones',
-            'description'=>'Puede actualizar todos los tipos de conexiones',
+            'name'=>'mirar datos tipos de conexiones',
+            'description'=>'Puede mirar datos todos los tipos de conexiones',
+        ]);
+        Permiso::create([
+            'slug'=>'tipos_conexiones.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los tipos de conexiones',
         ]);
         Permiso::create([
             'slug'=>'tipos_conexiones.destroy',
@@ -623,14 +708,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los sistemas operativos',
         ]);
         Permiso::create([
-            'slug'=>'sistemas_operativos.store',
+            'slug'=>'sistemas_operativos.create',
             'name'=>'Agregar sistemas operativos',
             'description'=>'Puede agregar sistemas operativos',
         ]);
         Permiso::create([
             'slug'=>'sistemas_operativos.show',
-            'name'=>'Actualizar sistemas operativos',
-            'description'=>'Puede actualizar todos los sistemas operativos',
+            'name'=>'mirar datos sistemas operativos',
+            'description'=>'Puede mirar datos todos los sistemas operativos',
+        ]);
+        Permiso::create([
+            'slug'=>'sistemas_operativos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los tipos de sistemas operativos',
         ]);
         Permiso::create([
             'slug'=>'sistemas_operativos.destroy',
@@ -655,14 +745,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los poblaciones',
         ]);
         Permiso::create([
-            'slug'=>'poblaciones.store',
+            'slug'=>'poblaciones.create',
             'name'=>'Agregar poblaciones',
             'description'=>'Puede agregar poblaciones',
         ]);
         Permiso::create([
             'slug'=>'poblaciones.show',
-            'name'=>'Actualizar poblaciones',
-            'description'=>'Puede actualizar todos los poblaciones',
+            'name'=>'mirar datos poblaciones',
+            'description'=>'Puede mirar datos todos los poblaciones',
+        ]);
+        Permiso::create([
+            'slug'=>'poblaciones.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de las poblaciones',
         ]);
         Permiso::create([
             'slug'=>'poblaciones.destroy',
@@ -687,14 +782,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los reportes de señal',
         ]);
         Permiso::create([
-            'slug'=>'reporte_senal.store',
+            'slug'=>'reporte_senal.create',
             'name'=>'Agregar reportes de señal',
             'description'=>'Puede agregar reportes de señal',
         ]);
         Permiso::create([
             'slug'=>'reporte_senal.show',
-            'name'=>'Actualizar reportes de señal',
-            'description'=>'Puede actualizar todos los reportes de señal',
+            'name'=>'mirar datos reportes de señal',
+            'description'=>'Puede mirar datos todos los reportes de señal',
+        ]);
+        Permiso::create([
+            'slug'=>'reporte_senal.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de reporte de señales',
         ]);
         Permiso::create([
             'slug'=>'reporte_senal.destroy',
@@ -719,14 +819,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los operadores tecnologicos',
         ]);
         Permiso::create([
-            'slug'=>'operador_tecnologicos.store',
+            'slug'=>'operador_tecnologicos.create',
             'name'=>'Agregar operadores tecnologicos',
             'description'=>'Puede agregar operadores tecnologicos',
         ]);
         Permiso::create([
+            'slug'=>'operador_tecnologicos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos los operadores tecnologicos',
+        ]);
+        Permiso::create([
             'slug'=>'operador_tecnologicos.show',
-            'name'=>'Actualizar operadores tecnologicos',
-            'description'=>'Puede actualizar todos los operadores tecnologicos',
+            'name'=>'mirar datos operadores tecnologicos',
+            'description'=>'Puede mirar datos todos los operadores tecnologicos',
         ]);
         Permiso::create([
             'slug'=>'operador_tecnologicos.destroy',
@@ -751,14 +856,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los reportes de fallas administrativas',
         ]);
         Permiso::create([
-            'slug'=>'reporte_falla_administrativa.store',
+            'slug'=>'reporte_falla_administrativa.create',
             'name'=>'Agregar reportes de fallas administrativas',
             'description'=>'Puede agregar reportes de fallas administrativas',
         ]);
         Permiso::create([
             'slug'=>'reporte_falla_administrativa.show',
-            'name'=>'Actualizar reportes de fallas administrativas',
-            'description'=>'Puede actualizar todos los reportes de fallas administrativas',
+            'name'=>'mirar datos reportes de fallas administrativas',
+            'description'=>'Puede mirar datos todos los reportes de fallas administrativas',
+        ]);
+        Permiso::create([
+            'slug'=>'reporte_falla_administrativa.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datosde los reportes de fallas administrativas',
         ]);
         Permiso::create([
             'slug'=>'reporte_falla_administrativa.destroy',
@@ -783,14 +893,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los recepcion central',
         ]);
         Permiso::create([
-            'slug'=>'recepcion_central.store',
+            'slug'=>'recepcion_central.create',
             'name'=>'Agregar recepcion central',
             'description'=>'Puede agregar recepcion central',
         ]);
         Permiso::create([
             'slug'=>'recepcion_central.show',
-            'name'=>'Actualizar recepcion central',
-            'description'=>'Puede actualizar todos los recepcion central',
+            'name'=>'mirar datos recepcion central',
+            'description'=>'Puede mirar datos todos los recepcion central',
+        ]);
+        Permiso::create([
+            'slug'=>'recepcion_central.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de recepcion central',
         ]);
         Permiso::create([
             'slug'=>'recepcion_central.destroy',
@@ -815,14 +930,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los puntos de oficinas',
         ]);
         Permiso::create([
-            'slug'=>'puntos_oficina.store',
+            'slug'=>'puntos_oficina.create',
             'name'=>'Agregar puntos de oficinas',
             'description'=>'Puede agregar puntos de oficinas',
         ]);
         Permiso::create([
             'slug'=>'puntos_oficina.show',
-            'name'=>'Actualizar puntos de oficinas',
-            'description'=>'Puede actualizar todos los puntos de oficinas',
+            'name'=>'mirar datos puntos de oficinas',
+            'description'=>'Puede mirar datos todos los puntos de oficinas',
+        ]);
+        Permiso::create([
+            'slug'=>'puntos_oficina.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los puntos de oficinas',
         ]);
         Permiso::create([
             'slug'=>'puntos_oficina.destroy',
@@ -847,19 +967,24 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los procesos',
         ]);
         Permiso::create([
-            'slug'=>'procesos.store',
+            'slug'=>'procesos.create',
             'name'=>'Agregar procesos',
             'description'=>'Puede agregar procesos',
         ]);
         Permiso::create([
             'slug'=>'procesos.show',
-            'name'=>'Actualizar procesos',
-            'description'=>'Puede actualizar todos los procesos',
+            'name'=>'mirar datos procesos',
+            'description'=>'Puede mirar datos todos los procesos',
         ]);
         Permiso::create([
             'slug'=>'procesos.destroy',
             'name'=>'Eliminar procesos',
             'description'=>'Puede eliminar todos los procesos',
+        ]);
+        Permiso::create([
+            'slug'=>'procesos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los procesos',
         ]);
         Permiso::create([
             'slug'=>'procesos.restore',
@@ -879,14 +1004,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los operadores de simcard',
         ]);
         Permiso::create([
-            'slug'=>'operador_simcard.store',
+            'slug'=>'operador_simcard.create',
             'name'=>'Agregar operadores de simcard',
             'description'=>'Puede agregar operadores de simcard',
         ]);
         Permiso::create([
             'slug'=>'operador_simcard.show',
-            'name'=>'Actualizar operadores de simcard',
-            'description'=>'Puede actualizar todos los operadores de simcard',
+            'name'=>'mirar datos operadores de simcard',
+            'description'=>'Puede mirar datos todos los operadores de simcard',
+        ]);
+        Permiso::create([
+            'slug'=>'operador_simcard.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los operadores de simcard',
         ]);
         Permiso::create([
             'slug'=>'operador_simcard.destroy',
@@ -911,14 +1041,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los operadores satelitales',
         ]);
         Permiso::create([
-            'slug'=>'operador_satelitales.store',
+            'slug'=>'operador_satelitales.create',
             'name'=>'Agregar operadores satelitales',
             'description'=>'Puede agregar operadores satelitales',
         ]);
         Permiso::create([
             'slug'=>'operador_satelitales.show',
-            'name'=>'Actualizar operadores satelitales',
-            'description'=>'Puede actualizar todos los operadores satelitales',
+            'name'=>'mirar datos operadores satelitales',
+            'description'=>'Puede mirar datos todos los operadores satelitales',
+        ]);
+        Permiso::create([
+            'slug'=>'operador_satelitales.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los operadores satelitales',
         ]);
         Permiso::create([
             'slug'=>'operador_satelitales.destroy',
@@ -943,14 +1078,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los modelo de maquinas',
         ]);
         Permiso::create([
-            'slug'=>'modelo_maquinas.store',
+            'slug'=>'modelo_maquinas.create',
             'name'=>'Agregar modelo de maquinas',
             'description'=>'Puede agregar modelo de maquinas',
         ]);
         Permiso::create([
             'slug'=>'modelo_maquinas.show',
-            'name'=>'Actualizar modelo de maquinas',
-            'description'=>'Puede actualizar todos los modelo de maquinas',
+            'name'=>'mirar datos modelo de maquinas',
+            'description'=>'Puede mirar datos todos los modelo de maquinas',
+        ]);
+        Permiso::create([
+            'slug'=>'modelo_maquinas.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los modelos de maquinas',
         ]);
         Permiso::create([
             'slug'=>'modelo_maquinas.destroy',
@@ -975,14 +1115,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los memorias ram',
         ]);
         Permiso::create([
-            'slug'=>'memorias_rams.store',
+            'slug'=>'memorias_rams.create',
             'name'=>'Agregar memorias ram',
             'description'=>'Puede agregar memorias ram',
         ]);
         Permiso::create([
             'slug'=>'memorias_rams.show',
-            'name'=>'Actualizar memorias ram',
-            'description'=>'Puede actualizar todos los memorias ram',
+            'name'=>'mirar datos memorias ram',
+            'description'=>'Puede mirar datos todos los memorias ram',
+        ]);
+        Permiso::create([
+            'slug'=>'memorias_rams.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datosde las memorias rams',
         ]);
         Permiso::create([
             'slug'=>'memorias_rams.destroy',
@@ -1002,32 +1147,37 @@ class PermisosSeeder extends Seeder
 
          //----------------------------Marcas equipos-------------------------------
          Permiso::create([
-            'slug'=>'mascas_equipos.index',
+            'slug'=>'marcas_equipos.index',
             'name'=>'Listar marcas de equipos',
             'description'=>'Puede ver todos los marcas de equipos',
         ]);
         Permiso::create([
-            'slug'=>'mascas_equipos.store',
+            'slug'=>'marcas_equipos.create',
             'name'=>'Agregar marcas de equipos',
             'description'=>'Puede agregar marcas de equipos',
         ]);
         Permiso::create([
-            'slug'=>'mascas_equipos.show',
-            'name'=>'Actualizar marcas de equipos',
-            'description'=>'Puede actualizar todos los marcas de equipos',
+            'slug'=>'marcas_equipos.show',
+            'name'=>'mirar datos marcas de equipos',
+            'description'=>'Puede mirar datos todos los marcas de equipos',
         ]);
         Permiso::create([
-            'slug'=>'mascas_equipos.destroy',
+            'slug'=>'marcas_equipos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de las marcas de equipos',
+        ]);
+        Permiso::create([
+            'slug'=>'marcas_equipos.destroy',
             'name'=>'Eliminar marcas de equipos',
             'description'=>'Puede eliminar todos los marcas de equipos',
         ]);
         Permiso::create([
-            'slug'=>'mascas_equipos.restore',
+            'slug'=>'marcas_equipos.restore',
             'name'=>'Restablecer marcas de equipos',
             'description'=>'Puede restablecer todos los marcas de equipos',
         ]);
         Permiso::create([
-            'slug'=>'mascas_equipos.forceDestroy',
+            'slug'=>'marcas_equipos.forceDestroy',
             'name'=>'Eliminar permanentemente marcas de equipos',
             'description'=>'Puede eliminar permanentemente todos los marcas de equipos',
         ]);
@@ -1039,14 +1189,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los estados',
         ]);
         Permiso::create([
-            'slug'=>'marcas_impresoras.store',
+            'slug'=>'marcas_impresoras.create',
             'name'=>'Agregar estados',
             'description'=>'Puede agregar estados',
         ]);
         Permiso::create([
             'slug'=>'marcas_impresoras.show',
-            'name'=>'Actualizar estados',
-            'description'=>'Puede actualizar todos los estados',
+            'name'=>'mirar datos estados',
+            'description'=>'Puede mirar datos todos los estados',
+        ]);
+        Permiso::create([
+            'slug'=>'marcas_impresoras.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de las marcas de impresoras',
         ]);
         Permiso::create([
             'slug'=>'marcas_impresoras.destroy',
@@ -1071,14 +1226,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los marcas de monitores',
         ]);
         Permiso::create([
-            'slug'=>'marcas_monitores.store',
+            'slug'=>'marcas_monitores.create',
             'name'=>'Agregar marcas de monitores',
             'description'=>'Puede agregar marcas de monitores',
         ]);
         Permiso::create([
             'slug'=>'marcas_monitores.show',
-            'name'=>'Actualizar marcas de monitores',
-            'description'=>'Puede actualizar todos los marcas de monitores',
+            'name'=>'mirar datos marcas de monitores',
+            'description'=>'Puede mirar datos todos los marcas de monitores',
+        ]);
+        Permiso::create([
+            'slug'=>'marcas_monitores.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datosde las marcas de monitores',
         ]);
         Permiso::create([
             'slug'=>'marcas_monitores.destroy',
@@ -1103,14 +1263,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los marcas de dvrs',
         ]);
         Permiso::create([
-            'slug'=>'marcas_dvrs.store',
+            'slug'=>'marcas_dvrs.create',
             'name'=>'Agregar marcas de dvrs',
             'description'=>'Puede agregar marcas de dvrs',
         ]);
         Permiso::create([
             'slug'=>'marcas_dvrs.show',
-            'name'=>'Actualizar marcas de dvrs',
-            'description'=>'Puede actualizar todos los marcas de dvrs',
+            'name'=>'mirar datos marcas de dvrs',
+            'description'=>'Puede mirar datos todos los marcas de dvrs',
+        ]);
+        Permiso::create([
+            'slug'=>'marcas_dvrs.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de lsa marcas de dvrs',
         ]);
         Permiso::create([
             'slug'=>'marcas_dvrs.destroy',
@@ -1135,14 +1300,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los centros de costos',
         ]);
         Permiso::create([
-            'slug'=>'centros_costos.store',
+            'slug'=>'centros_costos.create',
             'name'=>'Agregar centros de costos',
             'description'=>'Puede agregar centros de costos',
         ]);
         Permiso::create([
             'slug'=>'centros_costos.show',
-            'name'=>'Actualizar centros de costos',
-            'description'=>'Puede actualizar todos los centros de costos',
+            'name'=>'mirar datos centros de costos',
+            'description'=>'Puede mirar datos todos los centros de costos',
+        ]);
+        Permiso::create([
+            'slug'=>'centros_costos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los centros de costos',
         ]);
         Permiso::create([
             'slug'=>'centros_costos.destroy',
@@ -1167,14 +1337,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los inventarios de maquinas',
         ]);
         Permiso::create([
-            'slug'=>'inventario_maquinas.store',
+            'slug'=>'inventario_maquinas.create',
             'name'=>'Agregar inventarios de maquinas',
             'description'=>'Puede agregar inventarios de maquinas',
         ]);
         Permiso::create([
+            'slug'=>'inventario_maquinas.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de los inventarios de maquinas',
+        ]);
+        Permiso::create([
             'slug'=>'inventario_maquinas.show',
-            'name'=>'Actualizar inventarios de maquinas',
-            'description'=>'Puede actualizar todos los inventarios de maquinas',
+            'name'=>'mirar datos inventarios de maquinas',
+            'description'=>'Puede mirar datos todos los inventarios de maquinas',
         ]);
         Permiso::create([
             'slug'=>'inventario_maquinas.destroy',
@@ -1199,14 +1374,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los lineas moviles',
         ]);
         Permiso::create([
-            'slug'=>'lineas_moviles.store',
+            'slug'=>'lineas_moviles.create',
             'name'=>'Agregar lineas moviles',
             'description'=>'Puede agregar lineas moviles',
         ]);
         Permiso::create([
             'slug'=>'lineas_moviles.show',
-            'name'=>'Actualizar lineas moviles',
-            'description'=>'Puede actualizar todos los lineas moviles',
+            'name'=>'mirar datos lineas moviles',
+            'description'=>'Puede mirar datos todos los lineas moviles',
+        ]);
+        Permiso::create([
+            'slug'=>'lineas_moviles.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datosde las lineas moviles',
         ]);
         Permiso::create([
             'slug'=>'lineas_moviles.destroy',
@@ -1231,14 +1411,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los inventario de equipos',
         ]);
         Permiso::create([
-            'slug'=>'inventario_equipos.store',
+            'slug'=>'inventario_equipos.create',
             'name'=>'Agregar inventario de equipos',
             'description'=>'Puede agregar inventario de equipos',
         ]);
         Permiso::create([
             'slug'=>'inventario_equipos.show',
-            'name'=>'Actualizar inventario de equipos',
-            'description'=>'Puede actualizar todos los inventario de equipos',
+            'name'=>'mirar datos inventario de equipos',
+            'description'=>'Puede mirar datos todos los inventario de equipos',
+        ]);
+        Permiso::create([
+            'slug'=>'inventario_equipos.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos los inventarios de equipos',
         ]);
         Permiso::create([
             'slug'=>'inventario_equipos.destroy',
@@ -1263,14 +1448,14 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los inventario de camaras',
         ]);
         Permiso::create([
-            'slug'=>'inventario_camaras.store',
+            'slug'=>'inventario_camaras.create',
             'name'=>'Agregar inventario de camaras',
             'description'=>'Puede agregar inventario de camaras',
         ]);
         Permiso::create([
             'slug'=>'inventario_camaras.show',
-            'name'=>'Actualizar inventario de camaras',
-            'description'=>'Puede actualizar todos los inventario de camaras',
+            'name'=>'mirar datos inventario de camaras',
+            'description'=>'Puede mirar datos todos los inventario de camaras',
         ]);
         Permiso::create([
             'slug'=>'inventario_camaras.destroy',
@@ -1281,6 +1466,11 @@ class PermisosSeeder extends Seeder
             'slug'=>'inventario_camaras.restore',
             'name'=>'Restablecer inventario de camaras',
             'description'=>'Puede restablecer todos los inventario de camaras',
+        ]);
+        Permiso::create([
+            'slug'=>'inventario_camaras.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos los inventario de camaras',
         ]);
         Permiso::create([
             'slug'=>'inventario_camaras.forceDestroy',
@@ -1295,14 +1485,19 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede ver todos los actualizacion del posslim',
         ]);
         Permiso::create([
-            'slug'=>'actualizacion_posslim.store',
+            'slug'=>'actualizacion_posslim.create',
             'name'=>'Agregar actualizacion del posslim',
             'description'=>'Puede agregar actualizacion del posslim',
         ]);
         Permiso::create([
+            'slug'=>'actualizacion_posslim.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos las actualizacion del posslim',
+        ]);
+        Permiso::create([
             'slug'=>'actualizacion_posslim.show',
-            'name'=>'Actualizar actualizacion del posslim',
-            'description'=>'Puede actualizar todos los actualizacion del posslim',
+            'name'=>'mirar datos actualizacion del posslim',
+            'description'=>'Puede mirar datos todos los actualizacion del posslim',
         ]);
         Permiso::create([
             'slug'=>'actualizacion_posslim.destroy',
@@ -1320,21 +1515,26 @@ class PermisosSeeder extends Seeder
             'description'=>'Puede eliminar permanentemente todos los actualizacion del posslim',
         ]);
 
-         //----------------------------Estados-------------------------------
+         //----------------------------alidacio de antenas-------------------------------
          Permiso::create([
             'slug'=>'validacion_antenas.index',
             'name'=>'Listar validacion de antenas',
             'description'=>'Puede ver todos los validacion de antenas',
         ]);
         Permiso::create([
-            'slug'=>'validacion_antenas.store',
+            'slug'=>'validacion_antenas.create',
             'name'=>'Agregar validacion de antenas',
             'description'=>'Puede agregar validacion de antenas',
         ]);
         Permiso::create([
+            'slug'=>'validacion_antenas.update',
+            'name'=>'Actualizar datos',
+            'description'=>'Puede actualizar datos de las validaciones de antenas',
+        ]);
+        Permiso::create([
             'slug'=>'validacion_antenas.show',
-            'name'=>'Actualizar validacion de antenas',
-            'description'=>'Puede actualizar todos los validacion de antenas',
+            'name'=>'mirar datos validacion de antenas',
+            'description'=>'Puede mirar datos todos los validacion de antenas',
         ]);
         Permiso::create([
             'slug'=>'validacion_antenas.destroy',

@@ -36,7 +36,7 @@ class LiderController extends Controller
     {
         $validate=Validator::make($request->all(),[
             'name'=>'required|string|max:50|min:3',
-            'documento'=>'required|string|max:13|min:8|unique:asesores,documento',
+            'numero_documento'=>'required|string|max:13|min:8|unique:asesores,numero_documento',
         ]);
 
         if ($validate->fails()) {
@@ -49,7 +49,7 @@ class LiderController extends Controller
             try {
                 $user=Lider::create([
                     'name'=>$request->name,
-                    'documento'=>$request->documento,
+                    'numero_documento'=>$request->numero_documento,
                 ]);
 
                 return response()->json([
@@ -68,8 +68,6 @@ class LiderController extends Controller
 
     public function show(Lider $lider)
     {
-        return $lider;
-
         return response()->json([
             'message'=>'Lider obtenido.',
             'datas'=>$lider,
@@ -94,7 +92,7 @@ class LiderController extends Controller
 
         try {
             $lider->name=$request->name;
-            $lider->numero_documento=$request->documento;
+            $lider->numero_documento=$request->numero_documento;
             $lider->save();
 
             return response()->json([

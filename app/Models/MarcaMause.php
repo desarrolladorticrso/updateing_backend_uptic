@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MarcaEquipo extends Model
+class MarcaMause extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
-    protected $table='marca_equipos';
+    protected $table='marca_mice';
 
     protected $fillable=[
         'name'
@@ -21,10 +20,6 @@ class MarcaEquipo extends Model
         return $this->hasMany(InventarioEquipos::class);
     }
 
-    public function fallas_administrativas()
-    {
-        return $this->hasMany(ReporteFallasAbministrativas::class, 'equipo_id');
-    }
 
     public function scopeFilters($query,array $filters)
     {

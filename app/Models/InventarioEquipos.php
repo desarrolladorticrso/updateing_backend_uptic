@@ -30,21 +30,25 @@ class InventarioEquipos extends Model
         'modelo_monitor',
         'serial_monitor',
         'estado_monitor_id ',
+        'tiene_teclado',
         'marca_teclado_id ',
         'modelo_teclado',
         'activo_fijo_teclado',
         'serial_teclado',
         'estado_teclado_id ',
+        'tiene_mouse',
         'marca_mouse_id ',
         'modelo_mouse',
         'activo_fijo_mouse',
         'serial_mouse',
         'estado_mouse_id ',
+        'tiene_impresora',
         'marca_impresora_id ',
         'modelo_impresora',
         'activo_fijo_impresora',
         'serial_impresora',
         'estado_impresora_id ',
+        'tiene_lector_biometrico',
         'activo_fijo_lector_biometrico',
         'serial_lector_biometrico',
         'tiene_lector_barra',
@@ -100,9 +104,9 @@ class InventarioEquipos extends Model
         return $this->belongsTo(DiscosDuro::class);
     }
 
-    public function estado_equipo_trabajo()//--------------------------------------
+    public function estado_equipo_trabajo()
     {
-        return $this->belongsTo(Asesor::class);
+        return $this->belongsTo(Estado::class);
     }
 
     public function marca_monitor()
@@ -110,9 +114,9 @@ class InventarioEquipos extends Model
         return $this->belongsTo(MarcaMonitor::class);
     }
 
-    public function estado_monitor()//-------------------------------------
+    public function estado_monitor()
     {
-        return $this->belongsTo(Asesor::class);
+        return $this->belongsTo(Estado::class);
     }
 
     public function marca_teclado()
@@ -120,19 +124,19 @@ class InventarioEquipos extends Model
         return $this->belongsTo(MarcaTeclado::class);
     }
 
-    public function estado_teclado()//---------------------------------------
+    public function estado_teclado()
     {
-        return $this->belongsTo(MarcaTeclado::class);
+        return $this->belongsTo(Estado::class);
     }
 
-    public function marca_mouse()//-------------------------------------------
+    public function marca_mouse()
     {
-        return $this->belongsTo(MarcaTeclado::class);
+        return $this->belongsTo(MarcaMause::class);
     }
 
-    public function estado_mouse()//---------------------------------------
+    public function estado_mouse()
     {
-        return $this->belongsTo(MarcaTeclado::class);
+        return $this->belongsTo(Estado::class);
     }
 
     public function marca_impresora()
@@ -140,9 +144,9 @@ class InventarioEquipos extends Model
         return $this->belongsTo(MarcaImpresora::class);
     }
 
-    public function estado_impresora()//---------------------------------------
+    public function estado_impresora()
     {
-        return $this->belongsTo(MarcaImpresora::class);
+        return $this->belongsTo(Estado::class);
     }
 
     public function tipo_conexion()
@@ -164,7 +168,10 @@ class InventarioEquipos extends Model
     public function scopeFilters($query,array $filters)
     {
         $query->when($filters['search'] ?? null, function($query, $search){
-            $query->where('imei','like','%'.$search.'%');
+            $query->where('serial_equipo','like','%'.$search.'%')
+                ->orWhere('activo_fijo_equipo','like','%'.$search.'%');
+        })->when($filters['officePoints_id'] ?? null, function($query, $officePoints_id){
+            $query->where('punto_oficina_id',$officePoints_id);
         });
     }
 }

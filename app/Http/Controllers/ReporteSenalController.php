@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\ReporteSeñalExport;
-use App\Models\ReporteSeñal;
+use App\Exports\ReporteSenalExport;
+use App\Models\ReporteSenal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ReporteSeñalController extends Controller
+class ReporteSenalController extends Controller
 {
     public function index(Request $request)
     {
-        $datas=ReporteSeñal::withTrashed()
+        $datas=ReporteSenal::withTrashed()
             ->with('poblacion','tecnico','operador_tecnologico')
             ->orderBy('id','DESC')
             ->filters($request->all())
@@ -43,7 +43,7 @@ class ReporteSeñalController extends Controller
 
         if (!$validate->fails()) {
             try {
-                $reporte_señal=ReporteSeñal::create([
+                $reporte_señal=ReporteSenal::create([
                     'poblacion_id'=>$request->poblacion_id,
                     'operador_tecnologico_id'=>$request->operador_tecnologico_id,
                     'numero_linea'=>$request->numero_linea,
@@ -66,7 +66,7 @@ class ReporteSeñalController extends Controller
         }
     }
 
-    public function show(ReporteSeñal $reporte_señal)
+    public function show(ReporteSenal $reporte_señal)
     {
         return response()->json([
             'message'=>'Reporte de señal obtenido.',
@@ -75,7 +75,7 @@ class ReporteSeñalController extends Controller
         ],200);
     }
 
-    public function update(ReporteSeñal $reporte_señal, Request $request)
+    public function update(ReporteSenal $reporte_señal, Request $request)
     {
         $validation=Validator::make($request->all(),[
             'poblacion_id'=>'required|numeric|exists:poblacions,id',
@@ -116,7 +116,7 @@ class ReporteSeñalController extends Controller
         }
     }
 
-    public function destroy(ReporteSeñal $reporte_señal)
+    public function destroy(ReporteSenal $reporte_señal)
     {
         try {
             $reporte_señal->delete();
@@ -137,7 +137,7 @@ class ReporteSeñalController extends Controller
     public function restore($reporte_señal)
     {
         try {
-            ReporteSeñal::withTrashed()->where('id', $reporte_señal)->restore();
+            ReporteSenal::withTrashed()->where('id', $reporte_señal)->restore();
 
             return response()->json([
                 'message'=>'Reporte de señal restablecido.',
@@ -155,7 +155,7 @@ class ReporteSeñalController extends Controller
     public function forceDestroy($reporte_señal)
     {
         try {
-            ReporteSeñal::withTrashed()->where('id',$reporte_señal)->forceDelete();
+            ReporteSenal::withTrashed()->where('id',$reporte_señal)->forceDelete();
 
             return response()->json([
                 'message'=>'Reporte de señal eliminado.',
@@ -172,6 +172,6 @@ class ReporteSeñalController extends Controller
 
     public function export(Request $request)
     {
-        return Excel::download(new ReporteSeñalExport($request),'inventario-de-reporte-de-señal.xlsx');
+        return Excel::download(new ReporteSenalExport($request),'inventario-de-reporte-de-señal.xlsx');
     }
 }
