@@ -50,7 +50,7 @@ class InventarioMaquina extends Model
 
     public function operador_simcard()
     {
-        return $this->belongsTo(OperadorSimcard::class,'operador_id');
+        return $this->belongsTo(OperadorSimcard::class);
     }
 
     public function linea_movil()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LineaMovile;
 use Illuminate\Http\Request;
 use App\Exports\LinesMovilesExport;
+use App\Models\InventarioMaquina;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
@@ -213,6 +214,47 @@ class LineaMovileController extends Controller
     public function export(Request $request)
     {
         return Excel::download(new LinesMovilesExport($request), 'lineas-moviles.xlsx');
+    }
+
+    public function relacionar(Request $request)
+    {
+        $validate=Validator::make($request->all(),[
+            'linea'=>'required|exists:lineas_moviles,id',
+            'serial'=>'required|string|max:30|min:3',
+        ]);
+
+        if ($validate->fails()) {
+            return response()->json([
+                'message'=>'Error de validacion.',
+                'errors'=>$validate->errors()
+            ],422);
+        }
+
+        try {
+            $inventory=DB::table('inventario_maquinas')
+                ->where('serial_maquina',$request->serial)
+                ->orWhere('activo_fijo',$request->serial)
+                ->update([
+                    'nro_linea_id'=>$request->linea
+                ]);
+
+            if ($inventory) {
+                return response()->json([
+                    'message'=>'Se ha referenciado correctamente la linea.',
+                    'errors'=>null
+                ],201);
+            }
+            return response()->json([
+                'message'=>'No se encontraron registros de maquinas con el serial o activo ingresado.',
+                'errors'=>null
+            ],404);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message'=>'Ha surgido un error al intentar de referenciar la linea a la.',
+                'errors'=>$th
+            ],500);
+        }
     }
 
     public function report()

@@ -43,7 +43,7 @@ class ReporteSenalExport implements FromView, ShouldAutoSize, WithStyles
             ])->get();
         }
 
-        return view('Exports.inventario_reporte_de_señal',[
+        return view('Exports.inventario_reporte_de_senal',[
             'datas'=>$datas
         ]);
     }

@@ -482,6 +482,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::controller(LineaMovileController::class)->group(function(){
         Route::get('/lineas-moviles/listar', 'index')->name('lineas_moviles.index');
         Route::get('/lineas-moviles/all', 'all')->name('lineas_moviles.all');
+        Route::post('/lineas-moviles/relacionar', 'relacionar')->name('lineas_moviles.relacionar');
         Route::get('/lineas-moviles/report', 'report')->name('lineas_moviles.report');
         Route::get('/linea-movil/{linea_movil}', 'show')->name('lineas_moviles.show');
         Route::put('/linea-movil/{linea_movil}', 'update')->name('lineas_moviles.update');

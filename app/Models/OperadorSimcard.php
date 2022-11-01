@@ -21,6 +21,11 @@ class OperadorSimcard extends Model
         return $this->hasMany(LineaMovile::class);
     }
 
+    public function inventario_maquina()
+    {
+        return $this->hasOne(InventarioMaquina::class);
+    }
+
     public function scopeFilters($query,array $filters)
     {
         $query->when($filters['search'] ?? null, function($query, $search){

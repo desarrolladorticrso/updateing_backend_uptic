@@ -59,6 +59,7 @@ class InventoryMachineExport implements FromView, ShouldAutoSize, WithStyles
             ])
             ->get();
         }
+
         return view('Exports.inventario_de_maquinas',[
             'datas'=>$datas,
         ]);

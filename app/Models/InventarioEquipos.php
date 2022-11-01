@@ -172,6 +172,8 @@ class InventarioEquipos extends Model
                 ->orWhere('activo_fijo_equipo','like','%'.$search.'%');
         })->when($filters['officePoints_id'] ?? null, function($query, $officePoints_id){
             $query->where('punto_oficina_id',$officePoints_id);
+        })->when($filters['marca_equipo_id'] ?? null, function($query, $marca_equipo_id){
+            $query->where('marca_equipo_id',$marca_equipo_id);
         });
     }
 }
