@@ -26,6 +26,11 @@ class LineaMovile extends Model
         'caracteristicas_servicio',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function operador_simcard()
     {
         return $this->belongsTo(OperadorSimcard::class,'operador_id');

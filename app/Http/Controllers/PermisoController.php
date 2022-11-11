@@ -24,7 +24,7 @@ class PermisoController extends Controller
     public function store(Request $request)
     {
         $validation=Validator::make($request->all(),[
-            'name'=>'required|string|max:20|min:3|unique:permisos,name',
+            'name'=>'required|string|max:100|min:3|unique:permisos,name',
             'slug'=>'required|unique:permisos,slug',
             'description'=>'required|string|max:300|min:8',
         ]);
@@ -67,8 +67,8 @@ class PermisoController extends Controller
     public function update(Permiso $permission, Request $request)
     {
         $validation=Validator::make($request->all(),[
-            'name'=>'required|string|max:20|min:3|unique:permisos,name,'.$permission->id,
-            'slug'=>'required|string|max:20|min:3|unique:permisos,slug,'.$permission->id,
+            'name'=>'required|string|max:100|min:3|unique:permisos,name,'.$permission->id,
+            'slug'=>'required|string|max:100|min:3|unique:permisos,slug,'.$permission->id,
             'description'=>'required|string|max:700|min:3'
         ]);
 
