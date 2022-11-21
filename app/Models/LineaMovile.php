@@ -22,7 +22,7 @@ class LineaMovile extends Model
         'operador_id',
         'cargo_basico',
         'codigo_cliente',
-        'estado_linea_id ',
+        'estado_linea_id',
         'caracteristicas_servicio',
     ];
 
@@ -55,6 +55,8 @@ class LineaMovile extends Model
                 ->orWhere('usuario','like','%'.$search.'%');
         })->when($filters['operador_id'] ?? null, function($query, $search){
             $query->where('operador_id', $search);
+        })->when($filters['estado_linea_id'] ?? null, function($query, $search){
+            $query->where('estado_linea_id', $search);
         });
     }
 }

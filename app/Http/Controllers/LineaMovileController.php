@@ -50,6 +50,7 @@ class LineaMovileController extends Controller
             'plan'=>'nullable|max:500|min:10',
             'caracteristicas_servicio'=>'required|max:500',
             'operador_id'=>'required|exists:operador_simcards,id',
+            'estado_linea_id'=>'required|exists:estados,id'
         ]);
 
         if ($request->operador_id==3) {
@@ -106,6 +107,7 @@ class LineaMovileController extends Controller
             'plan'=>'nullable|max:500|min:10',
             'caracteristicas_servicio'=>'required|max:500',
             'operador_id'=>'required|exists:operador_simcards,id',
+            'estado_linea_id'=>'required|exists:estados,id'
         ]);
 
         if ($request->operador_id==3) {
@@ -261,7 +263,7 @@ class LineaMovileController extends Controller
     {
         $datas=DB::table('operador_simcards')
             ->select(DB::raw('count(lineas_moviles.id) as number, name'))
-            ->join('lineas_moviles','lineas_moviles.OPERADOR_ID','=','operador_simcards.id')
+            ->join('lineas_moviles','lineas_moviles.operador_id','=','operador_simcards.id')
             ->groupBy('name')
             ->get();
 
