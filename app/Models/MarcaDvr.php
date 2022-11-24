@@ -16,6 +16,11 @@ class MarcaDvr extends Model
         'name'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function inventario_camaras()
     {
         return $this->hasOne(InventarioCamara::class,'marca_dvr_id');

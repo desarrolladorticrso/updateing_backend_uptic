@@ -18,6 +18,11 @@ class Asesor extends Model
         'estado_id',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function inventario_maquinas()
     {
         return $this->hasMany(InventarioMaquina::class, 'asesor_id');

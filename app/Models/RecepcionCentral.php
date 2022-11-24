@@ -25,6 +25,11 @@ class RecepcionCentral extends Model
         'estado_paquete',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function transportadora()
     {
         return $this->belongsTo(Transportadora::class);

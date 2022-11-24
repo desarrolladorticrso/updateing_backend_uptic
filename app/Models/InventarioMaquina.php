@@ -28,6 +28,11 @@ class InventarioMaquina extends Model
         'operador_simcard_id',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function asesor()
     {
         return $this->belongsTo(Asesor::class);

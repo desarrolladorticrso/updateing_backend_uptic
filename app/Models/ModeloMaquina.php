@@ -16,6 +16,11 @@ class ModeloMaquina extends Model
         'name'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function inventario_maquina()
     {
         return $this->hasMany(InventarioMaquina::class);

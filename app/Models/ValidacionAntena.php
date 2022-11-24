@@ -30,6 +30,11 @@ class ValidacionAntena extends Model
         'ping_prom_tiemp_pag_giro',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function poblacion()
     {
         return $this->belongsTo(Poblacion::class);

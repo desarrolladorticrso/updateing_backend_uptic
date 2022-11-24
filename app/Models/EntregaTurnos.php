@@ -19,7 +19,8 @@ class EntregaTurnos extends Model
     ];
 
     protected $casts = [
-        'created_at' => "date:Y-m-d",
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
     ];
 
     public function tecnico_turno()

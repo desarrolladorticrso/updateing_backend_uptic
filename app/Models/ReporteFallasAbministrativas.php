@@ -22,6 +22,11 @@ class ReporteFallasAbministrativas extends Model
         'se_envio_a_provedor',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function equipo()
     {
         return $this->belongsTo(MarcaEquipo::class);

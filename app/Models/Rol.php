@@ -17,6 +17,10 @@ class Rol extends Model
         'full_acces',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
 
     public function users()
     {

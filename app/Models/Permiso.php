@@ -18,6 +18,11 @@ class Permiso extends Model
         'description',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function roles()
     {
         return $this->belongsToMany(Rol::class);

@@ -17,6 +17,11 @@ class Lider extends Model
         'numero_documento'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function inventario_maquinas()
     {
         return $this->hasMany(InventarioMaquina::class, 'lider_id');

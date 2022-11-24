@@ -16,6 +16,11 @@ class Proceso extends Model
         'name'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function scopeFilters($query,array $filters)
     {
         $query->when($filters['search'] ?? null, function($query, $search){

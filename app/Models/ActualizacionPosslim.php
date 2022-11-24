@@ -19,6 +19,11 @@ class ActualizacionPosslim extends Model
         'version_del_sims_id',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function tecnico()
     {
         return $this->belongsTo(User::class);

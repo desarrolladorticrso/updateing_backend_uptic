@@ -32,6 +32,11 @@ class InventarioCamara extends Model
         'nro_camaras_activas',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y H:m',
+        'updated_at' => 'datetime:d-m-Y H:m',
+    ];
+
     public function centro_costo()
     {
         return $this->belongsTo(CentroCosto::class,'centro_costo_id');
